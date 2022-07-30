@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:raihan_dicoding/model/card_model.dart';
+import 'package:raihan_dicoding/model/rangkumanku.dart';
 import 'package:badges/badges.dart';
 
 class DetailCard extends StatelessWidget {
-  final CardModel model;
+  final RangkumankuModel model;
   final Color color;
   final String level;
   const DetailCard(
@@ -47,24 +47,36 @@ class DetailCard extends StatelessWidget {
                       ),
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(50, 15, 0, 0),
-                    child: Badge(
-                      badgeColor: color,
-                      position: BadgePosition.bottomStart(bottom: 40, start: 2),
-                      shape: BadgeShape.square,
-                      borderRadius: BorderRadius.circular(10),
-                      badgeContent: Text(
-                        model.level,
-                        style: const TextStyle(color: Colors.white),
-                      ),
-                      child: Text(
-                        model.title,
-                        style: const TextStyle(
-                          fontSize: 30,
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                        ),
+                  Expanded(
+                    child: Container(
+                      alignment: Alignment.centerLeft,
+                      child: Stack(
+                        children: <Widget>[
+                          Padding(
+                            padding: const EdgeInsets.fromLTRB(30, 50, 0, 0),
+                            child: Text(
+                              model.title,
+                              style: const TextStyle(
+                                fontSize: 30,
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                          Badge(
+                            badgeColor: color,
+                            shape: BadgeShape.square,
+                            borderRadius: BorderRadius.circular(10),
+                            badgeContent: Text(
+                              model.level,
+                              style: TextStyle(
+                                  color: model.level == 'expert'
+                                      ? Colors.white
+                                      : Colors.black,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                   ),
